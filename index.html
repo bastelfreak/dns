@@ -199,7 +199,7 @@ class: center, middle, inverse
 .left-column[
 
 ## Setup
-## Root zone
+### Root zone
 
 ]
 
@@ -226,7 +226,7 @@ class: center, middle, inverse
 .left-column[
 
 ## Setup
-## Root zone
+### Root zone
 ## Why 13?
 
 ]
@@ -247,9 +247,9 @@ class: center, middle, inverse
 .left-column[
 
 ## Setup
-## Root zone
-## Why 13?
-## Registries
+### Root zone
+### Why 13?
+### Registries
 
 ]
 
@@ -270,15 +270,13 @@ class: center, middle, inverse
 .left-column[
 
 ## Setup
-## Root zone
-## Why 13?
-## Registries
-## DNS provider
+### Root zone
+### Why 13?
+### Registries
+### DNS provider
 ]
 
 .right-column[
-
-* Insert zonefile here
 
 * Dedicated company or the registry itself
 
@@ -291,6 +289,40 @@ class: center, middle, inverse
 .left-column[
 
 ## Zonefile
+### Example
+
+]
+
+.right-column[
+
+```xml
+$ORIGIN bastelfreak.de.
+$TTL 601
+@ 300   IN SOA dns.ovh.de. hostmaster.ovh.de. (
+                  2017091500 ; Serial
+                  10800   ; Refresh 3 hours
+                  3600    ; Retry   1 hour
+                  3600000 ; Expire  1000 hours
+                  300 )   ; Minimum 5 mins
+           IN    NS    dns.hosteurope.de.
+           IN    NS    dns2.hosteurope.de.
+
+           IN    MX    50  mx0.hosteurope.de.
+
+www   IN    A        95.156.226.70
+www   IN    AAAA  2a05:bec0:30:9::1
+; eof
+```
+
+]
+
+---
+
+.left-column[
+
+## Zonefile
+### Example
+### Content
 
 ]
 
@@ -315,7 +347,7 @@ class: center, middle, inverse
 .left-column[
 
 ## Zonefile
-## Record Types
+### Record Types
 
 ]
 
@@ -344,7 +376,8 @@ class: center, middle, inverse
 
 .left-column[
 
-## DNSSEC
+## Bonus
+### DNSSEC
 
 ]
 
@@ -356,7 +389,23 @@ class: center, middle, inverse
 
 .left-column[
 
-## SSH PKI
+## Bonus
+### SSH PKI
+
+]
+
+.right-column[
+
+![Default-aligned image](ssh-connection.svg)
+
+]
+
+---
+
+.left-column[
+
+## Bonus
+### SSH PKI
 
 ]
 

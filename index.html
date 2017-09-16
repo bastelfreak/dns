@@ -383,6 +383,8 @@ class: center, middle, inverse
 
 .right-column[
 
+![Default-aligned image](dns-hierarchy.svg)
+
 ]
 
 ---
@@ -390,6 +392,34 @@ class: center, middle, inverse
 .left-column[
 
 ## Bonus
+### DNSSEC
+
+]
+
+.right-column[
+
+```xml
+denic.de.		86399 IN DS 26155 8 2 (
+  078547BF937A225C9EFB2CAF7FAC11BD88671FCEDFAE
+  EB55C9B19CB0320BEFC9 )
+denic.de.   3599 IN RRSIG A 8 2 3600 (
+   20170930090000 20170916090000 26155 denic.de.
+   TEbgBeNqyBX1wzV8TF6GQAKwWFwK6oGl8jZEW1aOpANm
+   7U5nxAWk+GWTHQSPtNQYVBOhyukGOZQheuHv202ZuSOv
+   cTjmqSVjfuswtJFkU0AKW3EaEJlKduaXUmaJPtNlyBwY
+   HvKY440akDeECPbUihKd03UYAEI1JZm4cmT43lV89XqY
+   hfkIOnTkRywUmTPrsEC29FRz4zCT2syf7LM8IhyU9Uke
+   SnshWpB+9uW3D1yo+1SmoiHWPXrJekBNhecI )
+```
+
+]
+
+---
+
+.left-column[
+
+## Bonus
+### DNSSEC
 ### SSH PKI
 
 ]
@@ -405,19 +435,113 @@ class: center, middle, inverse
 .left-column[
 
 ## Bonus
+### DNSSEC
 ### SSH PKI
 
 ]
 
 .right-column[
 
+* PKI = Public Key Infrastructure
+
 * SSH keys are asymetric keys with public + private keys
 
-* Hash of the public key can be saved with the SSHFP record type in a zonefile
+* Hash of the public key from the server can be saved with the SSHFP record type in a zonefile
 
-* During a ssh connection, a client retrieves
+* During a ssh connection, a client retrieves the fingerprints and checks DNS
+
+* Man in the middle attacks are now very hard to achieve
+
+  * If you somehow get your box between the original server + client, you still need to adjust the keys in DNS
+
 ]
-    </textarea>
+
+---
+
+.left-column[
+
+## Bonus
+### DNSSEC
+### SSH PKI
+
+]
+
+.right-column[
+
+![Default-aligned image](ssh-connection-sshfp.svg)
+
+]
+
+---
+
+.left-column[
+
+## Bonus
+### DNSSEC
+### SSH PKE
+### DANE
+]
+
+.right-column[
+
+* DANE = DNS-based Authentication of Named Entities
+
+* CAA resource record type
+
+  * Enforces a certain CA for a domain
+
+```xml
+bastelfreak.de.  IN CAA 0 issue letsencrypt.org
+bastelfreak.de.  IN CAA 0 iodef mailto:me@bastelfreak.de
+```
+
+]
+
+---
+
+.left-column[
+
+## Bonus
+### DNSSEC
+### SSH PKI
+### DANE
+
+]
+
+.right-column[
+
+* TLSA record which provides a certificate fingerprint for a specific protocol + port + domain
+
+```xml
+_443._tcp.bastelfreak.de IN TLSA 4378568437568456856856
+```
+
+]
+
+---
+
+.left-column[
+
+## Bonus
+### DNSSEC
+### SSH PKI
+### DANE
+### Conclusion
+]
+
+.right-column[
+
+* DNS itself is a simple but insecure protocol
+
+* DNS can be secure with DNSSEC
+
+* DNS is capable of storing many different kinds of information
+
+* DNS is great to improve authentication of other protocols
+
+* DNSSEC + DANE/SSHFP provide a trusted way of authentication
+]
+  </textarea>
     <script src="remark-latest.min.js"></script>
     <script>
       var slideshow = remark.create();
